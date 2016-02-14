@@ -8,6 +8,7 @@
 #   None
 #
 # Commands:
+#   hubot what's <term>?          - Searches Urban Dictionary and returns definition
 #   hubot what is <term>?         - Searches Urban Dictionary and returns definition
 #   hubot urban me <term>         - Searches Urban Dictionary and returns definition
 #   hubot urban define me <term>  - Searches Urban Dictionary and returns definition
@@ -21,8 +22,7 @@
 #   Benjamin Eidelman (@beneidel)
 
 module.exports = (robot) ->
-
-  robot.respond /what ?is ([^\?]*)[\?]*/i, (msg) ->
+  robot.respond /what('s| ?is) ([^\?]*)[\?]*/i, (msg) ->
     urbanDict msg, msg.match[1], (found, entry, sounds) ->
       if !found
         msg.send "I don't know what \"#{msg.match[1]}\" is"
